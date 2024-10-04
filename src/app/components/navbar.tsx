@@ -6,7 +6,7 @@ import NavbarAuth from './navbar-auth'
 export default function Navbar() {
     return (
         <nav id="Navbar" className="container max-w-[1130px] mx-auto flex justify-between items-center pt-[30px]">
-            <Link href="index.html" className="flex items-center shrink-0">
+            <Link href="/" className="flex items-center shrink-0">
                 <Image width={120} height={60} src="/assets/images/logos/logo.svg" alt="logo" />
             </Link>
             <ul className="nav-menus flex gap-[30px] items-center w-fit">

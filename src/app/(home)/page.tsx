@@ -3,11 +3,12 @@ import Link from "next/link";
 import { getCityFilter } from "./lib/data";
 import Navbar from "../components/navbar";
 import CompanyLogos from "../components/company-logos";
+import { searchFlight } from "./lib/actions";
 
 export default async function HomePage() {
 
     const filter = await getCityFilter();
-    console.log(filter)
+
     return (
         <>
             <section id="Header" className="bg-[url('/assets/images/background/airplane.png')] bg-no-repeat bg-cover bg-left-top -z-10">
@@ -18,7 +19,7 @@ export default async function HomePage() {
                             <h1 className="font-extrabold text-[80px] leading-[90px]">Best Flights. <br />Cheaper Budget.</h1>
                             <p className="font-medium text-lg leading-[36px]">No more long queue, get more delicious heavy meals. <br />Crafted by best talented people around the world.</p>
                         </div>
-                        <form className="bg-white text-flysha-black w-full flex justify-between items-center rounded-[20px] p-4">
+                        <form action={searchFlight} className="bg-white text-flysha-black w-full flex justify-between items-center rounded-[20px] p-4">
                             <div className="flex gap-[50px] items-center p-4">
                                 <div className="flex flex-col justify-center gap-[14px]">
                                     <label htmlFor="departure" className="text-lg">Departure</label>
@@ -60,7 +61,7 @@ export default async function HomePage() {
                                     </div>
                                 </div>
                             </div>
-                            <Link href="signup.html" className="font-bold text-2xl leading-9 text-flysha-black text-center bg-flysha-light-purple rounded-[18px] p-[12px_30px] flex shrink-0 items-center h-[96px]  transition-all duration-300 hover:shadow-[0_10px_20px_0_#B88DFF]">Explore Now</Link>
+                            <button type="submit" className="font-bold text-2xl leading-9 text-flysha-black text-center bg-flysha-light-purple rounded-[18px] p-[12px_30px] flex shrink-0 items-center h-[96px]  transition-all duration-300 hover:shadow-[0_10px_20px_0_#B88DFF]">Explore Now</button>
                         </form>
                     </div>
                     <CompanyLogos />

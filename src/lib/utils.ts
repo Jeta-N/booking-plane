@@ -7,6 +7,25 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
+export const CHECKOUT_KEY = 'CHECKOUT_KEY'
+
+export const SEAT_VALUES = {
+  ECONOMY: {
+    label: "ECONOMY",
+    additionalPrice: 0
+  },
+  BUSINESS: {
+    label: "BUSINESS",
+    additionalPrice: 500000
+  },
+  FIRST: {
+    label: "FIRST",
+    additionalPrice: 1000000
+  }
+}
+
+export type SeatValuesType = keyof typeof SEAT_VALUES
+
 export const generateSeatPerClass = (flightId: string) => {
   const SEAT_CLASS: TypeSeat[] = ["ECONOMY", "BUSINESS", "FIRST"]
   const SEAT_CODE = ["A", "B", "C", "D"]
@@ -43,6 +62,19 @@ export const rupiahFormat = (value: number) => {
     style: 'currency',
     currency: 'IDR'
   }).format(value);
+}
+
+export const objectToParams = (obj: { [key: string]: unknown }) => {
+  const queryParams = Object.keys(obj).map((key) => {
+    if (obj[key] !== null) {
+      return `${key}=${obj[key]}`
+    }
+    return ""
+  })
+    .filter((key) => key !== '')
+    .join('&');
+
+  return queryParams
 }
 
 export const mappingSeats = (seats: FlightSeat[]) => {
